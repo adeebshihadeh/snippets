@@ -15,7 +15,7 @@ def add(_):
     print "add clicked"
     print xerox.paste()
     with open(datafile, "a") as f:
-        f.write(xerox.paste() + "\n")
+        f.write(xerox.paste().encode("utf8") + "\n")
     app.menu.clear()
     app.menu.update(generate_menu())
 
@@ -33,7 +33,7 @@ def generate_menu():
 
     if os.path.isfile(datafile):
         with open(datafile) as f:
-            data = f.read().strip().splitlines()
+            data = f.read().decode("utf8").strip().splitlines()
     else:
         open(datafile, "w").write("")
 
