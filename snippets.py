@@ -19,11 +19,16 @@ def add(_):
     app.menu.clear()
     app.menu.update(generate_menu())
 
+def clear(_):
+    open(datafile, "w").write("")
+    app.menu.clear()
+    app.menu.update(generate_menu())
+
 def quit(_):
     rumps.quit_application()
 
 def generate_menu():
-    menu = [rumps.MenuItem("add", callback=add), rumps.MenuItem("quit", callback=quit)]
+    menu = [rumps.MenuItem("add", callback=add), rumps.MenuItem("quit", callback=quit), rumps.MenuItem("clear", callback=clear)]
     data = []
 
     if os.path.isfile(datafile):
