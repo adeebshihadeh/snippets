@@ -5,7 +5,7 @@ import os
 rumps.debug_mode = True
 
 datafile = "data.txt"
-
+data = []
 
 def copy(text):
     print text.title
@@ -14,10 +14,12 @@ def copy(text):
 def add(_):
     print "add clicked"
     print xerox.paste()
-    with open(datafile, "a") as f:
-        f.write(xerox.paste().encode("utf8") + "\n")
-    app.menu.clear()
-    app.menu.update(generate_menu())
+    
+    if xerox.paste() not in data:
+        with open(datafile, "a") as f:
+            f.write((xerox.paste() + "\n").encode("utf8"))
+        app.menu.clear()
+        app.menu.update(generate_menu())
 
 def clear(_):
     open(datafile, "w").write("")
@@ -28,7 +30,10 @@ def quit(_):
     rumps.quit_application()
 
 def generate_menu():
-    menu = [rumps.MenuItem("add", callback=add), rumps.MenuItem("quit", callback=quit), rumps.MenuItem("clear", callback=clear)]
+    menu = [rumps.MenuItem("add", callback=add),
+            rumps.MenuItem("quit", callback=quit),
+            rumps.MenuItem("clear", callback=clear)]
+    global data
     data = []
 
     if os.path.isfile(datafile):
