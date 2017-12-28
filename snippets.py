@@ -24,8 +24,8 @@ def add(_):
 def clear(_):
     if rumps.alert(title="snippets",
         message="clear all entries?",
-        ok="yes",
-        cancel="no") == 1:
+        ok="no",
+        cancel="yes") == 0:
         open(datafile, "w").write("")
         app.menu.clear()
         app.menu.update(generate_menu())
