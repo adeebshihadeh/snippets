@@ -19,8 +19,11 @@ def add(_):
     app.menu.clear()
     app.menu.update(generate_menu())
 
+def quit(_):
+    rumps.quit_application()
+
 def generate_menu():
-    menu = [rumps.MenuItem("add", callback=add)]
+    menu = [rumps.MenuItem("add", callback=add), rumps.MenuItem("quit", callback=quit)]
     data = []
 
     if os.path.isfile(datafile):
@@ -35,6 +38,6 @@ def generate_menu():
     return menu
 
 if __name__ == "__main__":
-    app = rumps.App(" S ", quit_button="quit")
+    app = rumps.App(" S ", quit_button=None)
     app.menu = generate_menu()
     app.run()
