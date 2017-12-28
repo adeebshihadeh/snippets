@@ -16,14 +16,12 @@ def add(_):
     print xerox.paste()
     with open(datafile, "a") as f:
         f.write(xerox.paste() + "\n")
-    app.menu(generate_menu)
-    # print type(rumps.MenuItem.update())
-    rumps.notification("Awesome title", "amazing subtitle", "hi!!!")
-
+    app.menu.clear()
+    app.menu.update(generate_menu())
 
 def generate_menu():
     menu = [rumps.MenuItem("add", callback=add)]
-    date = []
+    data = []
 
     if os.path.isfile(datafile):
         with open(datafile) as f:
