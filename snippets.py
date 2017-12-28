@@ -22,9 +22,13 @@ def add(_):
         app.menu.update(generate_menu())
 
 def clear(_):
-    open(datafile, "w").write("")
-    app.menu.clear()
-    app.menu.update(generate_menu())
+    if rumps.alert(title="snippets",
+        message="clear all entries?",
+        ok="yes",
+        cancel="no") == 1:
+        open(datafile, "w").write("")
+        app.menu.clear()
+        app.menu.update(generate_menu())
 
 def quit(_):
     rumps.quit_application()
