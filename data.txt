@@ -1,9 +1,3 @@
-xerox.copy(text.title)
-xerox.copy(text.title)
-xerox.copy(text.title)
-xerox.copy(text.title)
-xerox.copy(text.title)
-xerox.copy(text.title)
-xerox.copy(text.title)
-xerox.copy(text.title)
 alt
+alt
+abs
